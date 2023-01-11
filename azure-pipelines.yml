@@ -26,6 +26,7 @@ steps:
     codeCoverageTool: 'JaCoCo'
     summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.xml'
     reportDirectory: '$(Build.SourcesDirectory)/build/reports/jacoco/test/html'
+  displayName: 'Public coverage unit test'
 - task: BuildQualityChecks@8
   inputs:
     checkWarnings: true
@@ -35,6 +36,7 @@ steps:
     coverageType: 'lines'
     coverageThreshold: '70'
     baseBranchRef: '$(System.PullRequest.TargetBranch)'
+  displayName: 'Check coverage'
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
@@ -70,3 +72,9 @@ steps:
     sonarQubeGradlePluginVersion: '3.3'
     spotBugsAnalysis: false
   displayName: SonarCloud Analysis
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    command: 'login'
+  displayName: Docker Login
