@@ -20,11 +20,11 @@ steps:
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
   displayName: 'Build Plugin'
-  
+
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.xml'
+    summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.html'
 
 - task: CopyFiles@2
   inputs:
