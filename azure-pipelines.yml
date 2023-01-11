@@ -29,8 +29,9 @@ steps:
 - task: BuildQualityChecks@8
   inputs:
     checkCoverage: true
-    coverageFailOption: fixed
-    coverageThreshold: 80
+    coverageFailOption: 'fixed'
+    coverageType: 'branches'
+    coverageThreshold: '80'
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
