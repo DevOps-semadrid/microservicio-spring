@@ -22,8 +22,8 @@ steps:
 
 - task: Gradle@3
   inputs:
-    workingDirectory: 'application'
-    gradleWrapperFile: 'application/gradlew'
+    workingDirectory: './'
+    gradleWrapperFile: './gradlew'
     tasks: 'build codeCoverageReport sonarqube'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
