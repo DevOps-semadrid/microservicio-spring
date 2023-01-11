@@ -33,7 +33,7 @@ steps:
     checkCoverage: true
     coverageFailOption: 'build'
     coverageType: 'lines'
-    coveragePrecision: '70'
+    coveragePrecision: '85'
     baseBranchRef: '$(System.PullRequest.TargetBranch)'
 - task: CopyFiles@2
   inputs:
