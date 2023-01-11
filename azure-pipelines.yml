@@ -78,3 +78,20 @@ steps:
     containerRegistry: 'Docker'
     command: 'login'
   displayName: Docker Login
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    repository: 'semadrid/microservicio-spring'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
+  displayName: Docker build
+    
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker'
+    repository: 'semadrid/microservicio-spring'
+    command: 'push'
+    tags: 'latest'
+  displayName: Docker Push
