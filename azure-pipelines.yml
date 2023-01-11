@@ -17,6 +17,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
 
@@ -25,3 +26,4 @@ steps:
     codeCoverageTool: 'JaCoCo'
     summaryFileLocation: '$(Build.SourcesDirectory)\build\reports\jacoco\test\jacocoTestReport.xml'
     reportDirectory: '$(Build.SourcesDirectory)\build\reports\jacoco\test\html'
+    
