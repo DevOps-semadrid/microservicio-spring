@@ -31,9 +31,9 @@ steps:
     checkWarnings: true
     warningFailOption: 'build'
     checkCoverage: true
-    coverageFailOption: 'build'
+    coverageFailOption: 'fixed'
     coverageType: 'lines'
-    coveragePrecision: '85'
+    coverageThreshold: '85'
     baseBranchRef: '$(System.PullRequest.TargetBranch)'
 - task: CopyFiles@2
   inputs:
