@@ -19,3 +19,13 @@ steps:
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+
+- task: Gradle@3
+  inputs:
+    workingDirectory: 'application'
+    gradleWrapperFile: 'application/gradlew'
+    tasks: 'build codeCoverageReport sonarqube'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    codeCoverageToolOption: 'None'
+    javaHomeOption: 'JDKVersion'
