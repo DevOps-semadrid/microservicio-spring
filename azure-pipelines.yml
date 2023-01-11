@@ -26,14 +26,22 @@ steps:
     codeCoverageTool: 'JaCoCo'
     summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.xml'
     reportDirectory: '$(Build.SourcesDirectory)/build/reports/jacoco/test/html'
-    additionalCodeCoverageFiles: 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: Jacoco
-    summaryFileLocation: 'coverage.xml'
-
 - task: BuildQualityChecks@8
   inputs:
     checkCoverage: true
     coverageFailOption: fixed
     coverageThreshold: 80
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: |
+        **/build/libs/*.jar
+        **/build/**/*.xml
+        **/build/**/*.html
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: appJar
+    publishLocation: 'Container'
