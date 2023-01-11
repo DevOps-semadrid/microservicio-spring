@@ -27,6 +27,11 @@ steps:
     summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.xml'
     reportDirectory: '$(Build.SourcesDirectory)/build/reports/jacoco/test/html'
 
+- task: BuildQualityChecks@8
+  inputs:
+    checkCoverage: true
+    coverageFailOption: fixed
+    coverageThreshold: 80
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
