@@ -28,9 +28,10 @@ steps:
     reportDirectory: '$(Build.SourcesDirectory)/build/reports/jacoco/test/html'
 - task: BuildQualityChecks@8
   inputs:
+    checkWarnings: true
     checkCoverage: true
-    coverageFailOption: 'fixed'
-    coverageType: 'branches'
+    coverageType: lines
+    baseBranchRef: $(System.PullRequest.TargetBranch)
     coverageThreshold: '80'
 - task: CopyFiles@2
   inputs:
