@@ -20,12 +20,8 @@ steps:
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
 
-- task: Gradle@3
+- task: PublishCodeCoverageResults@1
   inputs:
-    workingDirectory: './'
-    gradleWrapperFile: './gradlew'
-    tasks: 'build codeCoverageReport sonarqube'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    codeCoverageToolOption: 'None'
-    javaHomeOption: 'JDKVersion'
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(Build.SourcesDirectory)\build\reports\jacoco\test\jacocoTestReport.xml'
+    reportDirectory: '$(Build.SourcesDirectory)\build\reports\jacoco\test\html'
