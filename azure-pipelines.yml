@@ -23,6 +23,6 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(Build.SourcesDirectory)\build\reports\jacoco\test\jacocoTestReport.xml'
-    reportDirectory: '$(Build.SourcesDirectory)\**\reports\jacoco\test\html'
+    summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/CoverageTestReport.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/**/reports/jacoco/test/html'
     
