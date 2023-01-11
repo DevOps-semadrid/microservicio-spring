@@ -29,10 +29,12 @@ steps:
 - task: BuildQualityChecks@8
   inputs:
     checkWarnings: true
+    warningFailOption: 'build'
     checkCoverage: true
-    coverageType: lines
-    baseBranchRef: $(System.PullRequest.TargetBranch)
-    coverageThreshold: '80'
+    coverageFailOption: 'build'
+    coverageType: 'lines'
+    coveragePrecision: '70'
+    baseBranchRef: '$(System.PullRequest.TargetBranch)'
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
