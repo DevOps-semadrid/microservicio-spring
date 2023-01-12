@@ -18,4 +18,4 @@ spec:
       - name: microservicio-spring
         image: semadrid/microservicio-spring:latest
         ports:
-        - containerPort: 8085
+        - containerPort: 8080
