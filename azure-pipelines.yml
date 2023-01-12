@@ -26,7 +26,7 @@ steps:
     checkCoverage: true
     coverageFailOption: 'fixed'
     coverageType: 'lines'
-    coverageThreshold: '70'
+    coverageThreshold: '85'
     baseBranchRef: '$(System.PullRequest.TargetBranch)'
   displayName: 'Check coverage'
 - task: CopyFiles@2
@@ -86,3 +86,16 @@ steps:
     command: 'push'
     tags: 'latest'
   displayName: Docker Push
+
+- task: KubectlInstaller@0
+  inputs:
+    kubectlVersion: 'latest'
+
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'None'
+    namespace: 'default'
+    command: 'apply'
+    arguments: '-f deployment-app.yaml'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
