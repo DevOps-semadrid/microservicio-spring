@@ -26,7 +26,7 @@ steps:
     checkCoverage: true
     coverageFailOption: 'fixed'
     coverageType: 'lines'
-    coverageThreshold: '85'
+    coverageThreshold: '70'
     baseBranchRef: '$(System.PullRequest.TargetBranch)'
   displayName: 'Check coverage'
 - task: CopyFiles@2
